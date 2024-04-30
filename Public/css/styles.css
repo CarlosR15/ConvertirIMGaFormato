@@ -1,3 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #34e4ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
 
+.area {
+  height: 500px;
+  width: 700px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.area button {
+  padding: 10px 25px;
+  font-size: 20px;
+  border: 0;
+  background-color: #2b4141;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contenedor-archiv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: solid 1px #1d798a;
+}
+
+#preview {
+  margin-top: 10px;
+}
+
+.status {
+  padding: 0 10px;
+}
+
+.exito {
+  color: #52ffb8;
+}
+
+.fallo {
+  color: #f71735;
+}
 
 /*# sourceMappingURL=styles.css.map */

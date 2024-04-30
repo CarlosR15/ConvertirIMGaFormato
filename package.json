@@ -2,14 +2,14 @@
   "name": "convertirimgaformato",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "sass": "sass styles/sass/styles.sass:public/css/styles.css",
-    "sass-watch": "sass --watch Styles/Sass/styles.sass:public/css/styles.css",
+    "sass-watch": "sass --watch styles/sass/styles.sass:public/css/styles.css",
     "start": "npm run sass && nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Carlos Romellon",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
