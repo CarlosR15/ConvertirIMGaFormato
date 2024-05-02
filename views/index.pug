@@ -6,6 +6,7 @@ html
     body
         div(class='area')
             h2 Subir imagenes 
-            button(type='submit') Selecciona tu imagen
-            input(type='file', name='', id='input-file' hidden multiple)
+            form(action=`/uploadimg`, method='POST')
+              input(type='file', name='', id='input-file')
+              button(type='submit') Subir Imagen            
         div(id='preview')

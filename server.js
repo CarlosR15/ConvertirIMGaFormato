@@ -4,6 +4,8 @@ const app = express();
 const path = require('path');
 const router = require('./controllers/routes');
 
+
+
 // Configuración de la plantilla Pug
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
