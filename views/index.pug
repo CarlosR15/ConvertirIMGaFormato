@@ -6,7 +6,16 @@ html
     body
         div(class='area')
             h2 Subir imagenes 
-            form(action= '/uploadimg', method='POST')
+            form(action= '/uploadimg', method='POST', enctype='multipart/form-data')
               input(type='file' name='file' id='input-file')
-              button(type='submit') Subir Imagen            
+              select(name="tiposDeArchivo", id="tipo-archivo") 
+                    option(value="0" class='opcion') Selecciona tipo archivo
+                    option(value="png" class='opcion') PNG
+                    option(value="jpeg" class='opcion') JPEG
+                    option(value="webp" class='opcion') WEBP
+                    option(value="gif" class='opcion') GIF
+              button(type='submit') Subir Imagen  
+
+            form(action='/descarga-img-transformada' method='POST')
+                button(type='submit') Descargar Imagen Transformada   
         div(id='preview')

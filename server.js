@@ -1,10 +1,21 @@
 // Medios de inicializacion de las librerias
 const express = require('express');
+const dotenv = require('dotenv');
+const session = require('express-session');
 const app = express();
 const path = require('path');
 const router = require('./controllers/routes');
 
+dotenv.config();
 
+// Configurar middleware para manejar sesiones
+app.use(session({
+  secret: process.env.ACCESS_TOKEN_SECRET, // Clave secreta para firmar la cookie de sesión
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(express.urlencoded({ extended: true }));
 
 // Configuración de la plantilla Pug
 app.set('view engine', 'pug');
