@@ -5,48 +5,44 @@ $secColor: #0eb1d2
 $terColor: #2b4141
 
 body
-    margin: 0
-    padding: 0
-    box-sizing: border-box
-    background-color: $primaryColor
-    display: flex
-    align-items: center
-    justify-content: center
-    min-height: 100vh
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  background-color: $primaryColor
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 100vh
 
 .area
-    height: 500px
-    width: 700px
-    border-radius: 5px
-    display: flex
-    align-items: center
-    justify-content: center
-    flex-direction: column
-    
-    button
-        padding: 10px 25px
-        font-size: 20px
-        border: 0
-        background-color: $terColor
-        color: white
-        border-radius: 5px
-        cursor: pointer
-
-.contenedor-archiv
-    display: flex
-    align-items: center
-    gap: 10px
-    padding: 10px
-    border: solid 1px #1d798a
+  height: 500px
+  width: 700px
+  border-radius: 5px
+  border: solid
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
 
 #preview
-    margin-top: 10px
+  width: 300px
+  height: 200px
 
-.status
-    padding: 0 10px
+  img
+    width: 100%
+    height: 100%
+    display: block
 
-.exito
-    color: #52ffb8
+.formimg
+  padding: 10px
+  display: flex
+  flex-direction: column
 
-.fallo
-    color: #f71735
+  button
+    width: 300px
+    font-size: 20px
+    border: 0
+    background-color: $terColor
+    color: white
+    border-radius: 5px
+    cursor: pointer

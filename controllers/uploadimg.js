@@ -5,9 +5,9 @@ const router = express.Router();
 const multer = require('multer');
 
 //Funciones mias de mi
-const { convertirPNG, convertirWEBP, convertirJPEG, convertirGIF } = require('../modelos/convertirIMGs');
-const { guardarIMGsConvertida } = require('../modelos/guardarIMGs');
-const { nombreSinFormato } = require('../modelos/obetenerNombreIMGs');
+const { convertirPNG, convertirWEBP, convertirJPEG, convertirGIF } = require('../models/convertirIMGs');
+const { guardarIMGsConvertida } = require('../models/guardarIMGs');
+const { nombreSinFormato } = require('../models/obetenerNombreIMGs');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const ext = file.originalname.split('.').pop()
-    cb(null, `${Date.now()}.${ext}`)
+    cb(null, `${file.originalname}`)
   }
 })
 
@@ -53,7 +53,6 @@ router.post('/', upload.single('file'), async (req, res) => {
       break;
 
     default:
-      res.redirect('/');
       console.log('Paso algo culero');
       break;
   }
