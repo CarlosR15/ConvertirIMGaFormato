@@ -5,10 +5,10 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         link(rel='stylesheet', href='/css/styles.css')
     body
-        div(class='area')
+        .area
             h2 Subir imagenes 
-            div(id='preview')
-              img(src='' alt='Preview Img')
+            .formimg
+              img(src='' alt='Preview Img' id='preview')
 
             
             .formimg
@@ -24,6 +24,7 @@ html
                     option(value="jpeg" class='opcion') JPEG
                     option(value="webp" class='opcion') WEBP
                     option(value="gif" class='opcion') GIF
+                    option(value="jpg" class='opcion') JPG
               .formimg
                 button(type='submit') Subir Imagen  
 
@@ -41,7 +42,24 @@ html
                 if (file) {
                     var reader = new FileReader();
                     reader.onload = function(event) {
-                        document.getElementById('preview').querySelector('img').src = event.target.result;
+                        document.getElementById('preview').src = event.target.result;
+
+                        var mimeType = file.type; //obtiene el mime type o formato de la imagen subida
+                        console.log(mimeType);
+
+                        var select = document.getElementById('tipo-archivo');
+                        var options = select.options; //agarra las opciones del select llamado con el id 'tipo-archivo' y las guarda en la variable llamada options
+                        console.log(options);
+
+                        for (var i = 0; i < options.length; i++) { //un ciclo que busca en cada opcion
+                          if (options[i].value === mimeType) { //la coincidencia con el mymetype
+                            console.log("si la encontre") //pero no jala
+                            //- options[i].style.display = 'none';
+                          } else {
+                            console.log("nel, no hay")
+                            //- options[i].style.display = 'block';
+                          }
+                        }
                     }
                     reader.readAsDataURL(file);
                 }

@@ -1,21 +1,21 @@
-const connection = require('../bd/conectbd');
-const db = connection.conexionALaBase();
+const conexion = require('./conectbd');
 
-async function registrarUsuario(nombre, email, password) {
-    return new Promise((resolve, reject) => {
-        db.query(
-            'INSERT INTO usuarios (nombre, email, password_hash) VALUES (?, ?, ?)',
-            [nombre, email, password],
-            (err, results) => {
-            if (err) {
-                console.error(err.message);
-                reject(err);
-            } else {
-                console.log('Usuario insertado correctamente');
-                resolve();
-            }
-        });
-    });
+async function registrarUsuario(nombre, email, contrasenia) {
+    // Conexion
+    const bd = await conexion.conexionALaBase();
+    try {
+        // consulta
+        await bd.query('INSERT INTO usuarios (nombre, email, contrasenia) VALUES (?, ?, ?)', 
+        [
+            nombre,
+            email,
+            contrasenia
+        ]);
+        console.log('usuario registrado AÑA');
+        
+    } catch (error) {
+        console.log('Se experimento un destos faios ' + error);
+    }
 }
 
 module.exports = {

@@ -1,0 +1,23 @@
+doctype html 
+html 
+    head
+        title Iniciar Sesión 
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='/css/styles.css')
+    body
+      .area 
+        h2 Iniciar Sesión 
+        form(action='/login' method='POST' class='login-form')
+          .formimg
+            label(for='username' class='form-label') Usuario
+            input(type='text' name='username' id='username' placeholder='Usuario' class='form-input', required)
+
+          .formimg
+            label(for='password' class='form-label') Contraseña
+            input(type='password' name='password' id='password' placeholder='Contraseña' class='form-input', required)
+
+          .formimg
+            button(type='submit') Iniciar Sesión
+
+        p ¿No tienes una cuenta? 
+          a(href='/register') Regístrate

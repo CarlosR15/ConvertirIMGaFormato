@@ -1,0 +1,24 @@
+doctype html 
+html 
+    head
+        title Registro
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='/css/styles.css')
+    body
+      .area
+        h2 Registrate
+        form(action='/register-user' method='POST' class='registro-form')
+          .formimg
+            label(for='nombre' class='form-label') Nombre
+            input(type='text' name='nombre' id='nombre' placeholder='Ingrese su Nombre' class='form-input', required)
+
+          .formimg
+            label(for='email' class='form-label') Email
+            input(type='email' name='email' id='email' placeholder='Ingrese su Correo' class='form-input', required)
+
+          .formimg
+            label(for='password' class='form-label') Contraseña
+            input(type='password' name='password' id='password' placeholder='Ingrese su Contraseña' class='form-input', required)
+
+          .formimg
+            button(type='submit') Registrarse

@@ -17,7 +17,6 @@ function conexionALaBase() {
     return pool.promise().getConnection();
 }
 
-console.log(conexionALaBase());
-// module.exports = {
-//     conexionALaBase
-// };
+module.exports = {
+    conexionALaBase
+};
