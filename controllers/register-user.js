@@ -1,12 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../bd/callbd');
+const { getHash } = require('../models/autenticacion');
 
 router.post('/', async (req, res) => {
     const { nombre, email, password } = req.body;
 
     try {
-        await db.registrarUsuario(nombre, email, password);
+        const existeUsuario = await db.obtenerPorNombre(nombre); // falta hacer obtener por nombre en la bd
+        if (existeUsuario) {
+            return res.status(400).send('El usuario ya está registrado');
+        }
+
+        const contraseñaHasheada = await getHash(password);
+
+        await db.registrarUsuario(nombre, email, contraseñaHasheada);
 
         res.redirect('/login')
     } catch (error) {

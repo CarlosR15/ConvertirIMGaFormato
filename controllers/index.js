@@ -3,7 +3,8 @@ const router = express.Router();
 
 // Rutas públicas
 router.get('/', (req, res) => {
-  res.render('index');
+  var usuario = req.session.usuario;
+  res.render('index', {usuario: usuario});
 });
 
 module.exports = router;

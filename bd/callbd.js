@@ -18,6 +18,34 @@ async function registrarUsuario(nombre, email, contrasenia) {
     }
 }
 
+async function obtenerPorNombre(nombre) {
+    const bd = await conexion.conexionALaBase();
+    try {
+        const [results] = await bd.query('SELECT * FROM usuarios WHERE nombre = ?', [nombre]);
+        return results[0];
+    } catch (error) {
+        console.error('Error al obtener usuario por nombre:', error);
+        throw error;
+    } finally {
+        bd.release(); // Liberar la conexión al finalizar
+    }
+}
+
+async function obtenerPorId(id) {
+    const bd = await conexion.conexionALaBase();
+    try {
+        const [results] = await bd.query('SELECT * FROM usuarios WHERE id = ?', [id]);
+        return results[0];
+    } catch (error) {
+        console.error('Error al obtener usuario por ID:', error);
+        throw error;
+    } finally {
+        bd.release(); // Liberar la conexión al finalizar
+    }
+}
+
 module.exports = {
-    registrarUsuario
+    registrarUsuario,
+    obtenerPorNombre,
+    obtenerPorId
 };
