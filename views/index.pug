@@ -35,34 +35,34 @@ html
                 button(type='submit') Descargar Imagen
 
             script.
+              //Primer script, para que el boton abra el input y se seleccionen imagenes
               document.getElementById('boton-input').addEventListener('click', function() {
                 document.getElementById('input-file').click();
               });
 
+              //script donde: 1ro- se obtiene una preview de la imagen al seleccionarla
+              // y 2do- identifica su su mimetype y 
               document.getElementById('input-file').addEventListener('change', function() {
                 var file = this.files[0];
                 if (file) {
                     var reader = new FileReader();
                     reader.onload = function(event) {
                         document.getElementById('preview').src = event.target.result;
-
-                        var mimeType = file.type; //obtiene el mime type o formato de la imagen subida
-                        console.log(mimeType);
-
-                        var select = document.getElementById('tipo-archivo');
-                        var options = select.options; //agarra las opciones del select llamado con el id 'tipo-archivo' y las guarda en la variable llamada options
-                        console.log(options);
-
-                        for (var i = 0; i < options.length; i++) { //un ciclo que busca en cada opcion
-                          if (options[i].value === mimeType) { //la coincidencia con el mymetype
-                            console.log("si la encontre") //pero no jala
-                            //- options[i].style.display = 'none';
-                          } else {
-                            console.log("nel, no hay")
-                            //- options[i].style.display = 'block';
-                          }
                         }
                     }
                     reader.readAsDataURL(file);
-                }
+
+                    // Detectar el formato de la imagen
+                    var tipoMIME = file.type;
+
+                    // Deshabilitar la opción correspondiente en el select
+                    var opciones = document.querySelectorAll('#tipo-archivo option');
+
+                    opciones.forEach(function(opcion) {
+                      if (opcion.value !== "0" && opcion.value === tipoMIME.split('/')[1]) {
+                        opcion.style.display = "none"; // Ocultar la opción que coincide con el tipo MIME
+                      } else {
+                        opcion.style.display = "block"; // Mostrar las otras opciones
+                      }
+                    });
               });

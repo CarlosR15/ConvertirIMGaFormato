@@ -2,10 +2,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv').config();
 
-async function authenticate(req, res, next) {
-
-}
-
 // Función para generar un token JWT
 function generateToken(usuario_id) {
     // Crea un token con el ID de usuario y una clave secreta
