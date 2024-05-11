@@ -43,11 +43,14 @@ html
               //script donde: 1ro- se obtiene una preview de la imagen al seleccionarla
               // y 2do- identifica su su mimetype y 
               document.getElementById('input-file').addEventListener('change', function() {
+                let base64String = '';
                 var file = this.files[0];
                 if (file) {
                     var reader = new FileReader();
                     reader.onload = function(event) {
                         document.getElementById('preview').src = event.target.result;
+                        base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+                        console.log(base64String);
                         }
                     }
                     reader.readAsDataURL(file);

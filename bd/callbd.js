@@ -44,8 +44,48 @@ async function obtenerPorId(id) {
     }
 }
 
+async function subirImgSinCnv(imagenSub, horaSub, nombre, tipo) {
+    // Conexion
+    const bd = await conexion.conexionALaBase();
+    try {
+        // consulta
+        await bd.query('INSERT INTO usuarios (imagenSub, horaSub, nombre, tipo) VALUES (?, ?, ?, ?)', 
+        [
+            imagenSub,
+            horaSub,
+            nombre,
+            tipo
+        ]);
+        console.log('Imagen sin convertir fue subida correctamente a la bd');
+        
+    } catch (error) {
+        console.log('Se experimento un destos faios ' + error);
+    }
+}
+
+async function subirImgCnv(imagenDes, horaDes, nombre, tipo) {
+    // Conexion
+    const bd = await conexion.conexionALaBase();
+    try {
+        // consulta
+        await bd.query('INSERT INTO usuarios (imagenDes, horaDes, nombre, tipo) VALUES (?, ?, ?, ?)', 
+        [
+            imagenDes,
+            horaDes,
+            nombre,
+            tipo
+        ]);
+        console.log('Imagen convertida fue subida correctamente a la bd');
+        
+    } catch (error) {
+        console.log('Se experimento un destos faios ' + error);
+    }
+}
+
+
 module.exports = {
     registrarUsuario,
     obtenerPorNombre,
-    obtenerPorId
+    obtenerPorId,
+    subirImgSinCnv
 };

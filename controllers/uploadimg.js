@@ -52,7 +52,7 @@ router.post('/', upload.single('file'), async (req, res) => {
       break;
 
     default:
-      console.log('Paso algo culero');
+      console.log('Seleccione una imagen');
       break;
   }
   res.redirect('/');
