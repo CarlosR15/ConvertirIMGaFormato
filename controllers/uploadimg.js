@@ -38,7 +38,7 @@ router.post('/', upload.single('file'), async (req, res) => {
     return res.redirect('/login');
   }
 
-  req.session.pathImgGuar = `'./imagenes/uploads'/${file.originalname}`;
+  req.session.pathImgGuar = req.file.path;
 
   const contenido_base64 = fs.readFileSync(req.file.path, 'base64');
   const nombre_archivo = req.file.originalname;
@@ -56,9 +56,13 @@ router.post('/', upload.single('file'), async (req, res) => {
   switch (tiposDeArchivo) {
     case 'png':
       bufferIMG = await convertirPNG(imagePath);
-      pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreSinFormato(imagePath) + '.png');
+      nombreArchivoSinFormato = nombreSinFormato(imagePath) + '.png';
+      pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreArchivoSinFormato);
       req.session.pathImgConvSess = pathImageConvertida;
-      base64C = await convertB64C(pathImageConvertida);
+
+      // Realizar la conversión a b64
+      base64C = bufferIMG.toString('base64');
+
       // Obtener el mimetype
       mimetypeC = require('mime-types').lookup(pathImageConvertida);
 
@@ -70,10 +74,14 @@ router.post('/', upload.single('file'), async (req, res) => {
       break;
 
     case 'jpeg':
-      bufferIMG = await convertirJPEG(imagePath);
-      pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreSinFormato(imagePath) + '.jpeg');
+      bufferIMG = await convertirPNG(imagePath);
+      nombreArchivoSinFormato = nombreSinFormato(imagePath) + '.jpeg';
+      pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreArchivoSinFormato);
       req.session.pathImgConvSess = pathImageConvertida;
-      base64C = await convertB64C(pathImageConvertida);
+
+      // Realizar la conversión a b64
+      base64C = bufferIMG.toString('base64');
+
       // Obtener el mimetype
       mimetypeC = require('mime-types').lookup(pathImageConvertida);
 
@@ -85,10 +93,14 @@ router.post('/', upload.single('file'), async (req, res) => {
       break;
 
     case 'webp':
-      bufferIMG = await convertirWEBP(imagePath);
-      pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreSinFormato(imagePath) + '.webp');
+      bufferIMG = await convertirPNG(imagePath);
+      nombreArchivoSinFormato = nombreSinFormato(imagePath) + '.webp';
+      pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreArchivoSinFormato);
       req.session.pathImgConvSess = pathImageConvertida;
-      base64C = await convertB64C(pathImageConvertida);
+
+      // Realizar la conversión a b64
+      base64C = bufferIMG.toString('base64');
+
       // Obtener el mimetype
       mimetypeC = require('mime-types').lookup(pathImageConvertida);
 
@@ -100,10 +112,14 @@ router.post('/', upload.single('file'), async (req, res) => {
       break;
 
     case 'gif':
-      bufferIMG = await convertirGIF(imagePath);
-      pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreSinFormato(imagePath) + '.gif');
+      bufferIMG = await convertirPNG(imagePath);
+      nombreArchivoSinFormato = nombreSinFormato(imagePath) + '.gif';
+      pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreArchivoSinFormato);
       req.session.pathImgConvSess = pathImageConvertida;
-      base64C = await convertB64C(pathImageConvertida);
+
+      // Realizar la conversión a b64
+      base64C = bufferIMG.toString('base64');
+
       // Obtener el mimetype
       mimetypeC = require('mime-types').lookup(pathImageConvertida);
 
