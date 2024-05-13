@@ -5,34 +5,43 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         link(rel='stylesheet', href='/css/styles.css')
     body
-        if usuario 
-          p= usuario
+        if !usuario
+          p Intentos #{3 - invitado}
+        .botonLoginLogout
+          if !usuario
+            a(href="/login") 
+              button Iniciar Sesión
+          else
+            a(href="/logout") 
+              button Cerrar Sesión
+          a(href="/obtenerimg") 
+            button Imagenes Subidas
+        if usuario_id
+          p Hola #{usuario}
         .area
             h2 Subir imagenes 
-            .formimg
-              img(src='' alt='Preview Img' id='preview')
+            
+            img(src='' alt='Preview Img' id='preview')
 
             
-            .formimg
-              button(type='button' id='boton-input') Seleccionar Imagen 
+            button(type='button' id='boton-input') Seleccionar Imagen 
 
-            form(action= '/uploadimg', method='POST', enctype='multipart/form-data')
-              .formimg
-                input(type='file' name='file' id='input-file' hidden)
-              .formimg
-                select(name='tiposDeArchivo' id='tipo-archivo') 
-                    option(value="0" class='opcion') Selecciona tipo archivo
-                    option(value="png" class='opcion') PNG
-                    option(value="jpeg" class='opcion') JPEG
-                    option(value="webp" class='opcion') WEBP
-                    option(value="gif" class='opcion') GIF
-                    option(value="jpg" class='opcion') JPG
-              .formimg
-                button(type='submit') Subir Imagen  
+            form.formimg(action= '/uploadimg', method='POST', enctype='multipart/form-data')
+              
+              input(type='file' name='file' id='input-file' hidden accept='image/*')
 
-            form(action='/descarga-img-transformada' method='POST')
-              .formimg
-                button(type='submit') Descargar Imagen
+              select(name='tiposDeArchivo' id='tipo-archivo' style='display:none;') 
+                  option(value="0" class='opcion') Selecciona tipo archivo
+                  option(value="png" class='opcion') PNG
+                  option(value="jpeg" class='opcion') JPEG
+                  option(value="webp" class='opcion') WEBP
+                  option(value="gif" class='opcion') GIF
+                
+
+              button(type='submit') Subir Imagen  
+              
+            form.formimg(action='/descarga-img-transformada' method='POST')
+              button(type='submit') Descargar Imagen
 
             script.
               //Primer script, para que el boton abra el input y se seleccionen imagenes
@@ -43,14 +52,11 @@ html
               //script donde: 1ro- se obtiene una preview de la imagen al seleccionarla
               // y 2do- identifica su su mimetype y 
               document.getElementById('input-file').addEventListener('change', function() {
-                let base64String = '';
                 var file = this.files[0];
                 if (file) {
                     var reader = new FileReader();
                     reader.onload = function(event) {
                         document.getElementById('preview').src = event.target.result;
-                        base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
-                        console.log(base64String);
                         }
                     }
                     reader.readAsDataURL(file);
@@ -68,4 +74,7 @@ html
                         opcion.style.display = "block"; // Mostrar las otras opciones
                       }
                     });
+
+                    // Mostrar el select una vez que se ha seleccionado una imagen
+                    document.getElementById('tipo-archivo').style.display = "block";
               });

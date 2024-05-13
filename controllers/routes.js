@@ -8,6 +8,7 @@ const downloadimg = require('./descarga-img-transformada');
 const registro = require('./register');
 const registrarUser = require('./register-user');
 const login = require('./login');
+const obtenerimg = require('./obtenerimg');
 
 
 // Configura las rutas
@@ -17,5 +18,6 @@ router.use('/descarga-img-transformada', downloadimg);
 router.use('/register', registro);
 router.use('/register-user', registrarUser);
 router.use('/login', login);
+router.use('/obtenerimg', obtenerimg);
 
 module.exports = router;

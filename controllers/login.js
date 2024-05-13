@@ -15,6 +15,7 @@ router.post('/', passport.authenticate('local', {
   const token = generateToken(req.user.id);
 
   req.session.usuario = req.user.nombre;
+  req.session.usuario_id = req.user.id;
 
   res.cookie('token', token, { httpOnly: true, secure: false });
 

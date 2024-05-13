@@ -15,6 +15,21 @@ async function registrarUsuario(nombre, email, contrasenia) {
         
     } catch (error) {
         console.log('Se experimento un destos faios ' + error);
+    } finally {
+        bd.release(); // Liberar la conexión al finalizar
+    }
+}
+
+async function obtenerImagenPorId(usuarioId) {
+    const bd = await conexion.conexionALaBase();
+    try {
+        const [results] = await bd.query('SELECT * FROM registroImgUsuariosRegistrados WHERE usuario_id = ?', [usuarioId]);
+        return results;
+    } catch (error) {
+        console.error('Error al obtener usuario por imagenDes:', error);
+        throw error;
+    } finally {
+        bd.release(); // Liberar la conexión al finalizar
     }
 }
 
@@ -44,41 +59,51 @@ async function obtenerPorId(id) {
     }
 }
 
-async function subirImgSinCnv(imagenSub, horaSub, nombre, tipo) {
+async function subirImgInvitado(cookie, tipoImgSC, b64SC, nombreSC, tipoImgC, b64C, nombreC) {
     // Conexion
     const bd = await conexion.conexionALaBase();
     try {
         // consulta
-        await bd.query('INSERT INTO usuarios (imagenSub, horaSub, nombre, tipo) VALUES (?, ?, ?, ?)', 
+        await bd.query('INSERT INTO registroImgInvitados (cookie, tipoImgSinConv, b64ImgSinConv, nomImgSinConv, tipoImgConv, b64ImgConv, nomImgConv) VALUES (?, ?, ?, ?, ?, ?, ?)', 
         [
-            imagenSub,
-            horaSub,
-            nombre,
-            tipo
+            cookie,
+            tipoImgSC,
+            b64SC,
+            nombreSC,
+            tipoImgC,
+            b64C,
+            nombreC
         ]);
-        console.log('Imagen sin convertir fue subida correctamente a la bd');
+        console.log('Imagen del invitado fue subida correctamente a la bd');
         
     } catch (error) {
         console.log('Se experimento un destos faios ' + error);
+    } finally {
+        bd.release(); // Liberar la conexión al finalizar
     }
 }
 
-async function subirImgCnv(imagenDes, horaDes, nombre, tipo) {
+async function subirImgUsuario(usuario_id, tipoImgSC, b64SC, nombreSC, tipoImgC, b64C, nombreC) {
     // Conexion
     const bd = await conexion.conexionALaBase();
     try {
         // consulta
-        await bd.query('INSERT INTO usuarios (imagenDes, horaDes, nombre, tipo) VALUES (?, ?, ?, ?)', 
+        await bd.query('INSERT INTO registroImgUsuariosRegistrados (usuario_id, tipoImgSinConv, b64ImgSinConv, nomImgSinConv, tipoImgConv, b64ImgConv, nomImgConv) VALUES (?, ?, ?, ?, ?, ?, ?)', 
         [
-            imagenDes,
-            horaDes,
-            nombre,
-            tipo
+            usuario_id,
+            tipoImgSC,
+            b64SC,
+            nombreSC,
+            tipoImgC,
+            b64C,
+            nombreC
         ]);
-        console.log('Imagen convertida fue subida correctamente a la bd');
+        console.log('Imagen del usuario fue subida correctamente a la bd');
         
     } catch (error) {
         console.log('Se experimento un destos faios ' + error);
+    } finally {
+        bd.release(); // Liberar la conexión al finalizar
     }
 }
 
@@ -87,5 +112,7 @@ module.exports = {
     registrarUsuario,
     obtenerPorNombre,
     obtenerPorId,
-    subirImgSinCnv
+    subirImgInvitado,
+    subirImgUsuario,
+    obtenerImagenPorId
 };
