@@ -6,7 +6,7 @@ html
         link(rel='stylesheet', href='/css/styles.css')
     body
         if !usuario
-          p Intentos #{3 - invitado}
+          h2 Intentos #{3 - invitado}
         .botonLoginLogout
           if !usuario
             a(href="/login") 
@@ -17,7 +17,7 @@ html
           a(href="/obtenerimg") 
             button Imagenes Subidas
         if usuario_id
-          p Hola #{usuario}
+          h2 Hola #{usuario}
         .area
             h2 Subir imagenes 
             

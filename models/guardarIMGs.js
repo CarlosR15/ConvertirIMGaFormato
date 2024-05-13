@@ -19,7 +19,7 @@ async function guardarIMGsConvertida(imageBuffer, nombreSinFormato) {
     return filePath;
 }
 
-function convertB64C(pathImageConvertida) {
+function convertB64C(pathImageConvertida) { //intentar fucionar esta cosa con la de arriba para evitar el promise, y no tener que cargar de nuevo el path de la imagen convertida salbenme dios mio
     return new Promise((resolve, reject) => {
         fs.readFile(pathImageConvertida, (err, data) => {
             if (err) {

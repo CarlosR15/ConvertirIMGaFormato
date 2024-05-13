@@ -1,6 +1,6 @@
 const express = require('express');
+const fs = require('fs')
 const router = express.Router();
-const fs = require('fs');
 
 router.post('/', (req, res) => {  
     const path = req.session.pathImgConvSess;
@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
                 }
             });
 
-            // Borrar la imagen original
+            // Borrar la imagen original (no jala porque parece que el pathG se sigue utilizando en algún proceso)
             fs.unlink(pathG, (err) => {
                 if (err) {
                     console.error('Error al borrar pathG:', err);
@@ -30,5 +30,4 @@ router.post('/', (req, res) => {
         }
     });
 });
-
 module.exports = router;
