@@ -38,7 +38,7 @@ router.post('/', upload.single('file'), async (req, res) => {
     return res.redirect('/login');
   }
 
-  req.session.pathImgGuar = `'./imagenes/uploads'/${file.originalname}`;
+  req.session.pathImgGuar = req.file.path;
 
   const contenido_base64 = fs.readFileSync(req.file.path, 'base64');
   const nombre_archivo = req.file.originalname;
