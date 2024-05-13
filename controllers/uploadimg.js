@@ -74,7 +74,7 @@ router.post('/', upload.single('file'), async (req, res) => {
       break;
 
     case 'jpeg':
-      bufferIMG = await convertirPNG(imagePath);
+      bufferIMG = await convertirJPEG(imagePath);
       nombreArchivoSinFormato = nombreSinFormato(imagePath) + '.jpeg';
       pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreArchivoSinFormato);
       req.session.pathImgConvSess = pathImageConvertida;
@@ -93,7 +93,7 @@ router.post('/', upload.single('file'), async (req, res) => {
       break;
 
     case 'webp':
-      bufferIMG = await convertirPNG(imagePath);
+      bufferIMG = await convertirWEBP(imagePath);
       nombreArchivoSinFormato = nombreSinFormato(imagePath) + '.webp';
       pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreArchivoSinFormato);
       req.session.pathImgConvSess = pathImageConvertida;
@@ -112,7 +112,7 @@ router.post('/', upload.single('file'), async (req, res) => {
       break;
 
     case 'gif':
-      bufferIMG = await convertirPNG(imagePath);
+      bufferIMG = await convertirGIF(imagePath);
       nombreArchivoSinFormato = nombreSinFormato(imagePath) + '.gif';
       pathImageConvertida = await guardarIMGsConvertida(bufferIMG, nombreArchivoSinFormato);
       req.session.pathImgConvSess = pathImageConvertida;
