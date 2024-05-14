@@ -4,9 +4,10 @@ html
         title Convertidor 
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         link(rel='stylesheet', href='/css/styles.css')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200')
     body
         if !usuario
-          h2 Intentos #{3 - invitado}
+          h2 Intentos Restantes: #{3 - invitado}
         .botonLoginLogout
           if !usuario
             a(href="/login") 
@@ -15,13 +16,15 @@ html
             a(href="/logout") 
               button Cerrar Sesión
           a(href="/obtenerimg") 
-            button Imagenes Subidas
+            button Galeria
         if usuario_id
           h2 Hola #{usuario}
         .area
             h2 Subir imagenes 
             
-            img(src='' alt='Preview Img' id='preview')
+            .preview-container
+              span(class='material-symbols-outlined' id='imgprev') image
+              img(src='' id='preview')
 
             
             button(type='button' id='boton-input') Seleccionar Imagen 
@@ -56,6 +59,7 @@ html
                 if (file) {
                     var reader = new FileReader();
                     reader.onload = function(event) {
+                        document.getElementById('imgprev').style.display = 'none';
                         document.getElementById('preview').src = event.target.result;
                         }
                     }

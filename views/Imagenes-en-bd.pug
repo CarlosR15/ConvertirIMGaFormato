@@ -5,20 +5,25 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         link(rel='stylesheet', href='/css/styles.css')
     body
+        .stickyBtn
+            a(href="/")
+                button <- Regresar
         .areaHist
             if imagenes 
                 .histImgSub
                     h2 Imagen Subida
                     each imagen in imagenes
-                        img(id='imagenSub', src='data:' + imagen.tipoImgSinConv + ';base64,' + imagen.b64ImgSinConv, alt=imagen.descripcion)
-                        p Formato: #{imagen.tipoImgSinConv}
-                        p Nombre: #{imagen.nomImgSinConv}
+                        .ImgSubInd
+                            img(id='imagenSub', src='data:' + imagen.tipoImgSinConv + ';base64,' + imagen.b64ImgSinConv, alt=imagen.descripcion)
+                            p Formato: #{imagen.tipoImgSinConv}
+                            p Nombre: #{imagen.nomImgSinConv}
                 .histImgDes
                     h2 Imagen Descargada
                     each imagen in imagenes
-                        img(id='imagenDes', src='data:' + imagen.tipoImgConv + ';base64,' + imagen.b64ImgConv, alt=imagen.descripcion)
-                        p Formato: #{imagen.tipoImgConv}
-                        p Nombre: #{imagen.nomImgConv}
+                        .ImgDesInd
+                            img(id='imagenDes', src='data:' + imagen.tipoImgConv + ';base64,' + imagen.b64ImgConv, alt=imagen.descripcion)
+                            p Formato: #{imagen.tipoImgConv}
+                            p Nombre: #{imagen.nomImgConv}
                     
             else
                 p No se encontraron imágenes disponibles.
