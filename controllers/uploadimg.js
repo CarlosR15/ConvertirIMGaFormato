@@ -40,8 +40,14 @@ router.post('/', upload.single('file'), async (req, res) => { //post para subir 
     return res.redirect('/login');
   }
 
-  //se declara una variable de session del path de la imagen guardada
-  req.session.pathImgGuar = req.file.path;
+  // try catch, ya que al darle al boton subir, siempre intenta el post, con este try se obliga a que si no se puede genera la variable de session pathImgGuardar se regrese al inicio o index
+  try { 
+    //se declara una variable de session del path de la imagen guardada
+    req.session.pathImgGuar = req.file.path;
+  } catch (err) {
+    console.log('No selecciono una File');
+    return res.redirect('/');
+  }
 
   //se declaran las variables para mandar a la vase de datos
   const contenido_base64 = fs.readFileSync(req.file.path, 'base64');
@@ -145,6 +151,14 @@ router.post('/', upload.single('file'), async (req, res) => { //post para subir 
       break;
 
     default:
+      const pathG = req.session.pathImgGuar;
+      fs.unlink(pathG, (err) => {
+        if (err) {
+            console.error('Error al borrar pathG:', err);
+        } else {
+            console.log('pathG borrado exitosamente:', pathG);
+        }
+      });
       console.log('Seleccione una imagen');
       break;
   }

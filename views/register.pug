@@ -5,6 +5,9 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         link(rel='stylesheet', href='/css/styles.css')
     body
+      .stickyBtn
+        a(href="/")
+          button <- Inicio
       .area
         h2 Registrate
         form.formimg(action='/register-user' method='POST' class='registro-form')
@@ -18,3 +21,6 @@ html
           input(type='password' name='password' id='password' placeholder='Ingrese su Contraseña' class='form-input', required)
 
           button(type='submit') Registrarse
+
+        p ¿Ya tienes una cuenta? 
+          a(href='/login') Inicia Sesión

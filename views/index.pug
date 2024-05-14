@@ -29,7 +29,7 @@ html
             
             button(type='button' id='boton-input') Seleccionar Imagen 
 
-            form.formimg(action= '/uploadimg', method='POST', enctype='multipart/form-data')
+            form.formimg(action= '/uploadimg' method='POST' enctype='multipart/form-data')
               
               input(type='file' name='file' id='input-file' hidden accept='image/*')
 
@@ -41,7 +41,7 @@ html
                   option(value="gif" class='opcion') GIF
                 
 
-              button(type='submit') Subir Imagen  
+              button(type='submit' onclick='validarArchivo()') Subir Imagen  
               
             form.formimg(action='/descarga-img-transformada' method='POST')
               button(type='submit') Descargar Imagen
@@ -82,3 +82,17 @@ html
                     // Mostrar el select una vez que se ha seleccionado una imagen
                     document.getElementById('tipo-archivo').style.display = "block";
               });
+
+              //funcion para validar que se haya pues una imagen en el input-file
+              function validarArchivo() {
+                var fileInput = document.getElementById('input-file'); //se llama al input-file y se guarda en la variable fileInput
+                if (fileInput.files.length === 0) { //comprueba que la longitud sea 0, y si es así
+                  //envia una alerta pidiendo que se seleccione un archivo
+                  alert('Por favor, selecciona un archivo antes de subir.');
+                  //retorna false para no mandar nada al post
+                  return false;
+                } else { // y si encuentra que hay un file
+                  // se envia al formimg
+                  document.querySelector('form.formimg').submit();
+                }
+              }

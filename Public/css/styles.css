@@ -39,6 +39,10 @@ body h2 {
   cursor: pointer;
   margin: 0px auto;
 }
+.area select {
+  width: 300px;
+  font-size: 20px;
+}
 
 .preview-container {
   width: 300px;
@@ -140,10 +144,11 @@ body h2 {
   color: #0B0A07;
   border-radius: 5px;
   cursor: pointer;
-  margin: 0px auto;
+  margin-top: 10px;
 }
 .formimg input {
   width: 300px;
+  font-size: 20px;
 }
 .formimg label {
   font-size: 20px;
@@ -157,7 +162,7 @@ body h2 {
   top: 0;
 }
 .stickyBtn button {
-  idth: 150px;
+  width: 150px;
   font-size: 18px;
   border: 0;
   background-color: #489FB5;
@@ -176,6 +181,9 @@ body h2 {
     max-width: 85%;
   }
   .area button {
+    width: 80%;
+  }
+  .area select {
     width: 80%;
   }
   .area .preview-container {
@@ -222,12 +230,21 @@ body h2 {
   .formimg label {
     font-size: 15px;
   }
+  .stickyBtn {
+    max-width: 600px;
+  }
+  .stickyBtn button {
+    width: 100%;
+  }
 }
 @media only screen and (min-width: 601px) and (max-width: 1380px) {
   .area {
     width: 400px;
   }
   .area button {
+    width: 280px;
+  }
+  .area select {
     width: 280px;
   }
   .area .preview-container {
@@ -268,6 +285,9 @@ body h2 {
     width: 700px;
   }
   .area button {
+    width: 300px;
+  }
+  .area select {
     width: 300px;
   }
   .areaHist {
