@@ -15,8 +15,8 @@ html
           else
             a(href="/logout") 
               button Cerrar Sesión
-          a(href="/obtenerimg") 
-            button Galeria
+            a(href="/obtenerimg") 
+              button Galeria
         if usuario_id
           h2 Hola #{usuario}
         .area
@@ -34,7 +34,7 @@ html
               input(type='file' name='file' id='input-file' hidden accept='image/*')
 
               select(name='tiposDeArchivo' id='tipo-archivo' style='display:none;') 
-                  option(value="0" class='opcion') Selecciona tipo archivo
+                  option(value="0" class='opcion' disabled selected) Selecciona tipo archivo
                   option(value="png" class='opcion') PNG
                   option(value="jpeg" class='opcion') JPEG
                   option(value="webp" class='opcion') WEBP

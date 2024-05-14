@@ -3,18 +3,18 @@ const router = express.Router();
 const bdIMG = require('../bd/callbd');
 const reqIniSes = require('../models/autenticacion');
 
-// Rutas públicas
+// rutas publicas
 router.get('/', reqIniSes.autenticar, async (req, res) => {
     try {
-        // Obtener el ID del usuario de la sesión
+        // obtener el ID del usuario de la sesion
         const usuarioId = req.session.usuario_id;
 
-        // Obtener las imágenes del usuario
+        // obtener las imágenes del usuario
         const imagenes = await bdIMG.obtenerImagenPorId(usuarioId);
 
-        // Renderizar la plantilla con las imágenes obtenidas
+        // renderizar la plantilla con las imagenes obtenidas
         res.render('Imagenes-en-bd', { imagenes });
-    } catch (error) {
+    } catch (error) { //captura el error y lo imprime en la consola
         console.error('Error al obtener imágenes del usuario:', error);
     }
 });

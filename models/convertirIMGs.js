@@ -1,40 +1,28 @@
 const sharp = require('sharp');
 
-async function convertirPNG(dirIMG) {
-    const imageBuffer = await sharp(dirIMG).png().toBuffer();
+async function convertirPNG(dirIMG) { //funcion para convertir la imagen que se obtiene con dirIMG con sharp a PNG
+    const imageBuffer = await sharp(dirIMG).png().toBuffer(); //se llama a sharp para transformar la imagen a PNG y lo manda a buffer y lo guar en imageBuffer
     
-    return imageBuffer;
+    return imageBuffer; //retorna el imageBuffer
 }
 
-async function convertirWEBP(dirIMG) {
-    const imageBuffer = await sharp(dirIMG).webp().toBuffer();
+async function convertirWEBP(dirIMG) { //funcion para convertir la imagen que se obtiene con dirIMG con sharp a WEBP
+    const imageBuffer = await sharp(dirIMG).webp().toBuffer(); //se llama a sharp para transformar la imagen a WEBP y lo manda a buffer y lo guar en imageBuffer
     
-    return imageBuffer;
+    return imageBuffer; //retorna el imageBuffer
 }
 
-async function convertirJPEG(dirIMG) {
-    const imageBuffer = await sharp(dirIMG).jpeg().toBuffer();
+async function convertirJPEG(dirIMG) { //funcion para convertir la imagen que se obtiene con dirIMG con sharp a JPEG
+    const imageBuffer = await sharp(dirIMG).jpeg().toBuffer(); //se llama a sharp para transformar la imagen a JPEG y lo manda a buffer y lo guar en imageBuffer
     
-    return imageBuffer;
+    return imageBuffer; //retorna el imageBuffer
 }
 
-async function convertirGIF(dirIMG) {
-    const imageBuffer = await sharp(dirIMG).gif().toBuffer();
+async function convertirGIF(dirIMG) { //funcion para convertir la imagen que se obtiene con dirIMG con sharp a GIF
+    const imageBuffer = await sharp(dirIMG).gif().toBuffer(); //se llama a sharp para transformar la imagen a GIF y lo manda a buffer y lo guar en imageBuffer
     
-    return imageBuffer;
+    return imageBuffer; //retorna el imageBuffer
 }
-
-// const imagePath = './uploads/1714960219245.png'; // Reemplazar con la ruta de la imagen
-// convertirJPEG(imagePath)
-//     .then((jpegBuffer) => {
-//         // Hacer algo con la imagen transformada, como guardarla en disco
-//         fs.writeFileSync('imagen_transformada.png', jpegBuffer);
-//         console.log('Imagen transformada y guardada como imagen_transformada.png');
-//     })
-//     .catch((error) => {
-//         // Manejar el error si ocurre alguno
-//         console.error('Error:', error);
-//     });
 
 module.exports = {
     convertirPNG,

@@ -9,7 +9,7 @@ html
             a(href="/")
                 button <- Regresar
         .areaHist
-            if imagenes 
+            if imagenes.length > 0
                 .histImgSub
                     h2 Imagen Subida
                     each imagen in imagenes
@@ -17,6 +17,7 @@ html
                             img(id='imagenSub', src='data:' + imagen.tipoImgSinConv + ';base64,' + imagen.b64ImgSinConv, alt=imagen.descripcion)
                             p Formato: #{imagen.tipoImgSinConv}
                             p Nombre: #{imagen.nomImgSinConv}
+                            p Fecha de Subida: #{imagen.fechaYHora}
                 .histImgDes
                     h2 Imagen Descargada
                     each imagen in imagenes
@@ -24,6 +25,6 @@ html
                             img(id='imagenDes', src='data:' + imagen.tipoImgConv + ';base64,' + imagen.b64ImgConv, alt=imagen.descripcion)
                             p Formato: #{imagen.tipoImgConv}
                             p Nombre: #{imagen.nomImgConv}
-                    
+                            p Fecha de Descarga: #{imagen.fechaYHora}    
             else
-                p No se encontraron imágenes disponibles.
+                p No tiene imagenes subidas en su cuenta

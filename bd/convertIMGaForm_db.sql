@@ -1,3 +1,4 @@
+-- codigo SQL para crear la base de datos con sus tablas necesarias para el funcionamiento de la  web
 CREATE DATABASE IF NOT EXISTS convertIMGaForm_db;
 
 USE convertIMGaForm_db;

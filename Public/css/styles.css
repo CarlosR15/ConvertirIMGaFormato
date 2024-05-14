@@ -2,13 +2,16 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #2F4858;
+  background-color: #16697A;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   flex-direction: column;
-  color: #86BBD8;
+  color: #489FB5;
+}
+body h2 {
+  color: #EDE7E3;
 }
 
 .area {
@@ -23,12 +26,15 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+.area h2 {
+  color: #EDE7E3;
+}
 .area button {
   width: 300px;
   font-size: 20px;
   border: 0;
-  background-color: #86BBD8;
-  color: black;
+  background-color: #489FB5;
+  color: #0B0A07;
   border-radius: 5px;
   cursor: pointer;
   margin: 0px auto;
@@ -58,6 +64,7 @@ body {
 .areaHist p {
   margin-top: 0px;
   margin-bottom: 10px;
+  color: #EDE7E3;
 }
 
 .histImgSub {
@@ -73,15 +80,23 @@ body {
 }
 
 .ImgSubInd {
+  display: flex;
   border: solid;
   margin-top: 10px;
   margin-bottom: 10px;
+  align-self: baseline;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ImgDesInd {
+  display: flex;
   border: solid;
   margin-top: 10px;
   margin-bottom: 10px;
+  align-self: baseline;
+  flex-direction: column;
+  align-items: center;
 }
 
 .preview-container {
@@ -103,8 +118,8 @@ body {
   width: 150px;
   font-size: 18px;
   border: 0;
-  background-color: #86BBD8;
-  color: black;
+  background-color: #489FB5;
+  color: #0B0A07;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -121,8 +136,8 @@ body {
   width: 300px;
   font-size: 20px;
   border: 0;
-  background-color: #86BBD8;
-  color: black;
+  background-color: #489FB5;
+  color: #0B0A07;
   border-radius: 5px;
   cursor: pointer;
   margin: 0px auto;
@@ -132,6 +147,9 @@ body {
 }
 .formimg label {
   font-size: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  color: #EDE7E3;
 }
 
 .stickyBtn {
@@ -142,8 +160,8 @@ body {
   idth: 150px;
   font-size: 18px;
   border: 0;
-  background-color: #86BBD8;
-  color: black;
+  background-color: #489FB5;
+  color: #0B0A07;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -157,18 +175,22 @@ body {
   .area {
     max-width: 85%;
   }
-  .area #preview {
+  .area button {
+    width: 80%;
+  }
+  .area .preview-container {
     width: 200px;
     height: auto;
   }
   .areaHist {
     display: flex;
     flex-direction: column;
+    max-width: 600px;
   }
   .areaHist img {
     padding: 6px;
     max-width: 600px;
-    width: 60%;
+    width: 50%;
     height: auto;
   }
   .areaHist p {
@@ -204,6 +226,9 @@ body {
 @media only screen and (min-width: 601px) and (max-width: 1380px) {
   .area {
     width: 400px;
+  }
+  .area button {
+    width: 280px;
   }
   .area .preview-container {
     width: 200px;
@@ -241,6 +266,9 @@ body {
 @media only screen and (min-width: 1380px) {
   .area {
     width: 700px;
+  }
+  .area button {
+    width: 300px;
   }
   .areaHist {
     display: flex;
